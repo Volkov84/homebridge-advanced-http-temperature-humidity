@@ -60,10 +60,10 @@ AdvancedHttpTemperatureHumidity.prototype = {
                 this.log('Get Temperature succeeded!');
                 var info = JSON.parse(responseBody);
 
-                var temperature = parseFloat(info.temperature);
+                var temperature = info.TaskValues[0].Value;
 
                 if (this.humidityService !== false) {
-                    var humidity = parseFloat(info.humidity)
+                    var humidity = info.TaskValues[1].Value;
 
                     this.humidityService.setCharacteristic(Characteristic.CurrentRelativeHumidity, humidity);
                     this.humidity = humidity;
