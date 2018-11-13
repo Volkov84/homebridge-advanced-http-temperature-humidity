@@ -48,9 +48,13 @@
 ```
 ## Response
 The response must be in the following format:
+(ESP Easy: <espeasyip>/json?tasknr=<tasknumber>&view=sensorupdate )
 ```json
-{
-    "temperature": 25.8,
-    "humidity": 38
+{"TaskValues":
+[
+ {"ValueNumber":1,"Name":"Temperature","NrDecimals":1,"Value":21.7},
+ {"ValueNumber":2,"Name":"Humidity","NrDecimals":0,"Value":69}
+],
+"TTL":60000,"TaskEnabled":"true","TaskNumber":2
 }
 ```
