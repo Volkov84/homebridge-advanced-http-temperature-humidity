@@ -49,7 +49,7 @@
 ## Response
 The response must be in the following format:
 
-( ESP Easy: espeasyip/json?tasknr=<tasknumber>&view=sensorupdate )
+( ESP Easy: [espeasyip]/json?tasknr=[tasknumber]&view=sensorupdate )
 ```json
 {"TaskValues":
 [
