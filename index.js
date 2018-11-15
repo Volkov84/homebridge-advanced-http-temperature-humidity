@@ -60,14 +60,24 @@ AdvancedHttpTemperatureHumidity.prototype = {
                 this.log('Get Temperature succeeded!');
                 var info = JSON.parse(responseBody);
 
+                if (parseFloat(info.temperature)){
+                var temperature = parseFloat(info.temperature);
+                } else {
                 var temperature = info.TaskValues[0].Value;
+                }
 
                 if (this.humidityService !== false) {
-                    var humidity = info.TaskValues[1].Value;
 
-                    this.humidityService.setCharacteristic(Characteristic.CurrentRelativeHumidity, humidity);
+                    if (parseFloat(info.temperature)){
+                      var humidity = parseFloat(info.humidity);
+                      this.humidityService.setCharacteristic(Characteristic.CurrentRelativeHumidity, humidity);
+                    } else {
+                      var humidity = info.TaskValues[1].Value;
+                    }
+
                     this.humidity = humidity;
                 }
+
 
                 callback(null, temperature);
             }
